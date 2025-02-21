@@ -6,14 +6,22 @@ function Search-Web {
 Search the web from the terminal
 .PARAMETER Query
 Search query string.
+.PARAMETER Engine
+Which search engine to use to web search. Current choices are brave, duckduckgo
+
 .NOTES
 To add to startup script.
 #>
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory, HelpMessage = "Search query string.")]
+        [Parameter(Mandatory, Position = 0, HelpMessage = "Search query string.")]
+        [Alias('Q')]
         [ValidateNotNullOrEmpty()]
-        [string]$Query
+        [string]$Query,
+
+        [Parameter(Position = 1, HelpMessage = "Which search engine to use")]
+        [ValidateSet("duckduckgo", "brave")]
+        [string] $Engine = "duckduckgo"
     )
 
     # Encode the query string properly.
@@ -21,7 +29,20 @@ To add to startup script.
 
     Write-Verbose "`$encodedQuery=$encodedQuery"
 
-    $url = "https://duckduckgo.com/?q=$encodedQuery"
+    if ($Engine -eq "brave") {
+        $url = "https://search.brave.com/search?q=$encodedQuery"
+    }
+    else {
+        $url = "https://duckduckgo.com/?q=$encodedQuery"
+    }
+    <#
+    switch ($Engine) {
+        "duckduckgo" {
+        }
+        "brave" {}
+        default {}
+    }
+#>
 
     Write-Verbose "`$url=$url"
 
