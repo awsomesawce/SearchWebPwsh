@@ -9,22 +9,21 @@ Search query string.
 .NOTES
 To add to startup script.
 #>
+    [CmdletBinding()]
     param (
-        [Parameter()]
+        [Parameter(Mandatory, HelpMessage = "Search query string.")]
+        [ValidateNotNullOrEmpty()]
         [string]$Query
     )
 
-
-
+    # Encode the query string properly.
     $encodedQuery = [System.Web.HttpUtility]::UrlEncode($Query)
 
-    Write-Verbose "encodedQuery=$encodedQuery"
-
+    Write-Verbose "`$encodedQuery=$encodedQuery"
 
     $url = "https://duckduckgo.com/?q=$encodedQuery"
 
     Write-Verbose "`$url=$url"
-  
 
     Start-Process $url
 

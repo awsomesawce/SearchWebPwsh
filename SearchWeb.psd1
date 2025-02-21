@@ -12,7 +12,7 @@
     RootModule        = 'SearchWeb.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.1'
+    ModuleVersion     = '0.1.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -21,7 +21,7 @@
     GUID              = 'b2b81979-1291-45da-8cab-4c90cfb75785'
 
     # Author of this module
-    Author            = 'Carl'
+    Author            = 'Carl Capodice'
 
     # Company or vendor of this module
     CompanyName       = 'Unknown'
@@ -69,16 +69,16 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = @('*')
+    FunctionsToExport = @('Search-Web')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport   = @('*')
+    CmdletsToExport   = @()
 
     # Variables to export from this module
-    VariablesToExport = @('*')
+    VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = @('*')
+    AliasesToExport   = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -87,7 +87,7 @@
     # ModuleList = @()
 
     # List of all files packaged with this module
-    # FileList = @()
+    FileList          = @('SearchWeb.psd1', 'SearchWeb.psm1', 'README.md')
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData       = @{
